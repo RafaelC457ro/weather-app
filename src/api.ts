@@ -1,6 +1,6 @@
 export async function getGeoLocation({ limit = 10, search }: { limit?: number; search: string }) {
   const request = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=${limit}&appid=25ef542799c468209677e5c1b1c07564`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=${limit}&appid=25ef542799c468209677e5c1b1c07564`,
   );
   const response = await request.json();
   return response;

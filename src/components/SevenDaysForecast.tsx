@@ -2,7 +2,7 @@ import { useUnit } from '../libs/hooks/use-unit';
 import { kelvin2celsius } from '../libs/utils';
 import { WeatherDaily, WeatherData } from '../types';
 import { Card } from './ui/Card';
-import { WeatherIcon } from './ui/WeatherIcon';
+import { WeatherIcon } from './WeatherIcon';
 
 export interface SevenDaysForecastProps {
   weatherData?: WeatherData;

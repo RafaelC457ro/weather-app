@@ -7,7 +7,7 @@ import {
   RainyIcon,
   SnowyIcon,
   AtmosphereIcon,
-} from './Icons';
+} from '../ui/Icons';
 
 export interface WeatherIconProps extends React.SVGProps<SVGSVGElement> {
   code?: number;

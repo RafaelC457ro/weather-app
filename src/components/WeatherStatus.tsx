@@ -1,12 +1,13 @@
 import { useUnit } from '../libs/hooks/use-unit';
-import { kelvin2celsius } from '../libs/utils';
+import { kelvin2celsius, kelvin2fahrenheit } from '../libs/utils';
 import { WeatherData, Location } from '../types';
-import { WeatherIcon } from './ui/WeatherIcon';
+import { WeatherIcon } from './WeatherIcon';
 
 export interface WeatherStatusProps {
   location?: Location;
   weaterData?: WeatherData;
 }
+
 export function WeatherStatus({ location, weaterData }: WeatherStatusProps) {
   const { unit } = useUnit();
   return (
@@ -20,9 +21,9 @@ export function WeatherStatus({ location, weaterData }: WeatherStatusProps) {
         </div>
         <div className="text-6xl">
           {weaterData?.current?.temp && (
-            <span className="font-bold text-white">
+            <span className="font-bold text-white" data-testid="weather-status">
               {unit === 'Fahrenheit'
-                ? kelvin2celsius(weaterData.current.temp)
+                ? kelvin2fahrenheit(weaterData.current.temp)
                 : kelvin2celsius(weaterData.current.temp)}
               ° {unit === 'Fahrenheit' ? 'F' : 'C'}
             </span>

@@ -1,9 +1,9 @@
 import { Popover, RadioGroup } from '@headlessui/react';
-import { CheckIcon, GearIcon } from './ui/Icons';
+import { CheckIcon, GearIcon } from '../ui/Icons';
 import { useState } from 'react';
 import { usePopper } from 'react-popper';
-import { Unit } from '../types';
-import { useUnit } from '../libs/hooks/use-unit';
+import { Unit } from '../../types';
+import { useUnit } from '../../libs/hooks/use-unit';
 
 const units: Unit[] = ['Celsius', 'Fahrenheit'];
 
@@ -12,7 +12,7 @@ function Options({ selected, setSelected }: { selected: Unit; setSelected: (unit
     <div className="w-full px-4 p-10">
       <div className="mx-auto w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
-          <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+          <RadioGroup.Label className="sr-only">Unit</RadioGroup.Label>
           <div className="space-y-2">
             {units.map((unit) => (
               <RadioGroup.Option
@@ -32,6 +32,8 @@ function Options({ selected, setSelected }: { selected: Unit; setSelected: (unit
                           <RadioGroup.Label
                             as="p"
                             className={`font-medium  ${checked ? 'text-white' : 'text-gray-900'}`}
+                            data-testid={`unit-${unit}`}
+                            data-selected={checked}
                           >
                             {unit}
                           </RadioGroup.Label>
@@ -76,7 +78,12 @@ export function Settings() {
 
   return (
     <Popover className="relative">
-      <Popover.Button ref={(ref) => setReferenceElement(ref)} aria-label="Settings" className="outline-none">
+      <Popover.Button
+        ref={(ref) => setReferenceElement(ref)}
+        aria-label="Settings"
+        className="outline-none"
+        data-testid="settings-button"
+      >
         <GearIcon />
       </Popover.Button>
       <Popover.Panel

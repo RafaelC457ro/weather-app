@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import { useQuery } from '@tanstack/react-query';
 import { useDebounce } from '@uidotdev/usehooks';
-import { getGeoLocation } from '../api';
-import type { Location } from '../types';
+import { getGeoLocation } from '../../api';
+import type { Location } from '../../types';
+
 export interface SearchProps {
   onChange: (place: Location) => void;
 }
@@ -17,7 +18,6 @@ export function Search({ onChange }: SearchProps) {
     data: places = [],
     isLoading,
     isError,
-    error,
   } = useQuery({
     queryKey: ['places', search],
     queryFn: async () => {
@@ -52,6 +52,7 @@ export function Search({ onChange }: SearchProps) {
             text-input-foreground 
             focus:outline-none"
           value={query}
+          data-testid="search-input"
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search for a place"
         />
@@ -70,8 +71,8 @@ export function Search({ onChange }: SearchProps) {
             focus:outline-none 
             sm:text-sm"
         >
-          {isError ? (
-            <span className="block px-4 py-2 text-sm text-red-500">An error occurred: {error.message}</span>
+          {!isLoading && isError ? (
+            <span className="block px-4 py-2 text-sm text-red-500">An error occurred.</span>
           ) : !isLoading && places.length > 0 ? (
             places?.map((place) => (
               <Combobox.Option
