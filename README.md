@@ -1,5 +1,7 @@
 # Weather App
 
+live demo: [here](https://soft-salmiakki-c47f32.netlify.app/)
+
 ## Description
 
 This is a simple weather app that uses the OpenWeather API to display the current weather
