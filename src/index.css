@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #161616;
+    --foreground: #ffffff;
+
+    --card-background: #323232;
+    --card-foreground: #ffffff;
+
+    --input-background: #3c3c3c;
+    --input-foreground: #b2b2b2;
+
+    --border: #434343;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
