@@ -1,5 +1,5 @@
 import { useUnit } from '../libs/hooks/use-unit';
-import { kelvin2celsius } from '../libs/utils';
+import { kelvin2celsius, kelvin2fahrenheit } from '../libs/utils';
 import { WeatherDaily, WeatherData } from '../types';
 import { Card } from './ui/Card';
 import { WeatherIcon } from './WeatherIcon';
@@ -37,7 +37,7 @@ export function SevenDaysForecast({ weatherData }: SevenDaysForecastProps) {
               </div>
               <div className="flex flex-1 justify-center items-center">
                 <div className="items-center text-foreground text-xl">
-                  {unit === 'Fahrenheit' ? kelvin2celsius(item.temperature) : kelvin2celsius(item.temperature)}°{' '}
+                  {unit === 'Fahrenheit' ? kelvin2fahrenheit(item.temperature) : kelvin2celsius(item.temperature)}°{' '}
                   {unit === 'Fahrenheit' ? 'F' : 'C'}
                 </div>
               </div>

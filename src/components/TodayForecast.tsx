@@ -1,5 +1,5 @@
 import { useUnit } from '../libs/hooks/use-unit/use-unit';
-import { kelvin2celsius } from '../libs/utils';
+import { kelvin2celsius, kelvin2fahrenheit } from '../libs/utils';
 import { WeatherData } from '../types';
 import { Card } from './ui/Card';
 import { WeatherIcon } from './WeatherIcon';
@@ -41,7 +41,7 @@ export function TodayForecast({ weatherData }: TodayForecastProps) {
                   </div>
                   <div className="flex flex-col justify-center">
                     <p className="text-white text-xl">
-                      {unit === 'Fahrenheit' ? kelvin2celsius(item.temperature) : kelvin2celsius(item.temperature)}°{' '}
+                      {unit === 'Fahrenheit' ? kelvin2fahrenheit(item.temperature) : kelvin2celsius(item.temperature)}°{' '}
                       {unit === 'Fahrenheit' ? 'F' : 'C'}
                     </p>
                   </div>
